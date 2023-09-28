@@ -1,10 +1,5 @@
-export default [
-  {
-    method: 'GET',
-    path: '/',
-    handler: 'myController.index',
-    config: {
-      policies: [],
-    },
-  },
-];
+import adminRoutes from './admin';
+
+export default {
+  admin: adminRoutes
+}

@@ -6,7 +6,6 @@ import getTrad from '../../utils/getTrad';
 
 export const ExportButton = () => {
   const { formatMessage } = useIntl();
-  const []
 
   return <Button>{formatMessage({ id: getTrad('export.button') })}</Button>
 };

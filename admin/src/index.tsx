@@ -1,16 +1,15 @@
 import { prefixPluginTranslations } from '@strapi/helper-plugin';
 
 import pluginPkg from '../../package.json';
+import { ExportButton } from './components/ExportButton';
 import Initializer from './components/Initializer';
 import PluginIcon from './components/PluginIcon';
 import pluginId from './pluginId';
-import { ExportButton } from './components/ExportButton';
 
 const name = pluginPkg.strapi.name;
 
 export default {
   register(app: any) {
-
     app.addMenuLink({
       to: `/plugins/${pluginId}`,
       icon: PluginIcon,
@@ -24,11 +23,11 @@ export default {
         return component;
       },
       permissions: [
-        // Uncomment to set the permissions of the plugin here
-        // {
-        //   action: '', // the action name should be plugin::plugin-name.actionType
-        //   subject: null,
-        // },
+        // the action name should be plugin::plugin-name.actionType
+        {
+          action: 'xlsx-export::xlsx-export.export',
+          subject: null,
+        },
       ],
     });
     const plugin = {
@@ -66,7 +65,7 @@ export default {
               locale,
             };
           });
-      })
+      }),
     );
 
     return Promise.resolve(importedTrads);

@@ -1,5 +1,5 @@
-import myController from './my-controller';
+import xlsxExportController from './xlsx-export'
 
 export default {
-  myController,
+  xlsxExport: xlsxExportController,
 };

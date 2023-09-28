@@ -1,5 +1,5 @@
-import myService from './my-service';
+import xlsxService from './xlsx-export';
 
 export default {
-  myService,
+  xlsxService,
 };
