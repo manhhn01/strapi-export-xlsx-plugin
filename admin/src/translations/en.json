@@ -1,3 +1,6 @@
 {
-  "export.button": "Export Data"
+  "export.button": "Export Data",
+  "export.message.error": "An error occurred while exporting the data",
+  "export.message.processing": "Exporting data. Please wait...",
+  "export.message.success": "Data successfully exported"
 }

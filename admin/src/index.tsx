@@ -3,33 +3,12 @@ import { prefixPluginTranslations } from '@strapi/helper-plugin';
 import pluginPkg from '../../package.json';
 import { ExportButton } from './components/ExportButton';
 import Initializer from './components/Initializer';
-import PluginIcon from './components/PluginIcon';
 import pluginId from './pluginId';
 
 const name = pluginPkg.strapi.name;
 
 export default {
   register(app: any) {
-    app.addMenuLink({
-      to: `/plugins/${pluginId}`,
-      icon: PluginIcon,
-      intlLabel: {
-        id: `${pluginId}.plugin.name`,
-        defaultMessage: name,
-      },
-      Component: async () => {
-        const component = await import(/* webpackChunkName: "[request]" */ './pages/App');
-
-        return component;
-      },
-      permissions: [
-        // the action name should be plugin::plugin-name.actionType
-        {
-          action: 'xlsx-export::xlsx-export.export',
-          subject: null,
-        },
-      ],
-    });
     const plugin = {
       id: pluginId,
       initializer: Initializer,
@@ -42,7 +21,7 @@ export default {
 
   bootstrap(app: any) {
     app.injectContentManagerComponent('listView', 'actions', {
-      name: 'my-plugin-my-compo',
+      name: 'export-button',
       Component: ExportButton,
     });
   },

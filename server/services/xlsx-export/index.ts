@@ -18,8 +18,8 @@ export default ({ strapi }: { readonly strapi: Strapi }) => ({
     const worksheet = XLSX.utils.json_to_sheet(Array.isArray(sanitizedEntries) ? sanitizedEntries : [sanitizedEntries]);
     const workbook = XLSX.utils.book_new();
 
-    XLSX.utils.book_append_sheet(workbook, worksheet, exportCollection.split(':').pop() || 'worksheet');
+    XLSX.utils.book_append_sheet(workbook, worksheet, exportCollection.split('.').pop() || 'worksheet');
 
-    return XLSX.write(workbook, { type: 'buffer', bookType: 'csv' });
+    return XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
   },
 });
